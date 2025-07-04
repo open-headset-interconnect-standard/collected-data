@@ -20,4 +20,4 @@ To create a pull-request into this repo (read: to publish data here):
 
 # Data!
 
-[Audio Isolation Transformer measurements](Audio%20Transformers/README.md)
+[Audio Isolation Transformer measurements](Audio%20Transformers/)
