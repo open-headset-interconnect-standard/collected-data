@@ -9,9 +9,10 @@
     - [2.4. ED8 Permalloy](#24-ed8-permalloy)
     - [2.5. EI-14 eBay](#25-ei-14-ebay)
     - [2.6. EI-14 TL016 "Mouser" (Xicon?)](#26-ei-14-tl016-mouser-xicon)
-    - [All graphs, at 100mV](#all-graphs-at-100mv)
-    - [All graphs, at 3V](#all-graphs-at-3v)
-- [3. Test Board Details](#3-test-board-details)
+- [3. All transformers, compared by voltage](#3-all-transformers-compared-by-voltage)
+    - [3.1. 100mV](#31-100mv)
+    - [3.2. 3V](#32-3v)
+- [4. Test Board Details](#4-test-board-details)
 
 I got reports that audio frequency response was ... pretty terrible ... on a product I made.  So I wanted to measure the actual frequency response of several 1:1 audio transformers to see if there were better options.
 
@@ -46,6 +47,8 @@ The graphs below show the 1v measurements, since that's a pretty typical signal 
 
 Just to show the correctness and limitations of my measurement setup (THD and THD+N measurements are pretty limited), I measured a BNC barrel connector, no transformer, no boards, no 1k&Omega; load.  This should be as close to flat as possible.
 
+![BNC Barrel](Images/BNC%20Barrel.png)
+
 * [Raw measurement data.](Data/Through%20Calibration/README.md)
 
 ![Through Calibration](Data/Through%20Calibration/Gain-Phase-THD-THDN-1v.png)
@@ -53,6 +56,8 @@ Just to show the correctness and limitations of my measurement setup (THD and TH
 ## 2.2. Bourns SM-LP-5001
 
 This is the transformer I was using that my customer complained about.  It's readily available from trusted distributors like Mouser or DigiKey.
+
+![Bourns SM-LP-5001](Images/SM-LP-5001_sml.jpg)
 
 Links:
 
@@ -68,6 +73,8 @@ I don't know what to call this one.  I got it [from AliExpress](https://www.alie
 
 I don't endorse any of these more than the other, they're pretty typical faceless vendors on AliExpress.  The one I measured is the first link above; I can't speak to the others, but they seem very similar.
 
+![PXSW PX-MB-CPC E-9818](Images/PXSW%20PX-MB-CPC%20E-9818.png)
+
 Links:
 
 * [AliExpress page I bought from](https://www.aliexpress.us/item/3256807819143335.html)
@@ -80,6 +87,8 @@ Links:
 
 This is another one I don't quite know what to call it.  The Aliexpress listing just refers to it as "SMD ED8 Permalloy Audio Transformer."  It does claim a frequency range of 200Hz-20kHz.
 
+![ED8 Permalloy](Images/ED8%20Permalloy.png)
+
 Links:
 * [AliExpress page I bought from](https://www.aliexpress.us/item/3256804057242738.html)
 * I can't find any manufacturer information on any of these.  If you can find a first-source, please submit an issue.
@@ -91,6 +100,8 @@ Links:
 
 The listing I bought from is no longer available, but I provide a link to a similar part below.  These are very inexpensive, and through-hole which makes them good candidates for hack-together solutions.
 
+![EI-14 eBay](Images/EI-14%20Red%20eBay.png)
+
 Links:
 * [eBay listing similar to what I bought](https://www.ebay.com/itm/405470535902)
 * [Raw measurement data.](Data/EI-14%20Red%20eBay/README.md)
@@ -101,15 +112,19 @@ Links:
 
 I don't remember buying these. :-D  They are stamped `Mouser` on the top, and labeled `TL016` on the side.  Searching Mouser for `TL016` finds the Xicon part below, which seems to match the description of what I have.  So, let's go with that.
 
+![EI-14 TL016](Images/EL-14%20Red%20TL016.png)
+
 Links:
 * [Mouser product page.](https://www.mouser.com/ProductDetail/Xicon/42TL016-RC?qs=AoVmiMTrbDJMqsZex%252BybNw%3D%3D)
 * [Raw measurement data.](Data/EI-14%20Red%20TL016%20Mouser/README.md)
 
 ![EI-14 TL016](Data/EI-14%20Red%20TL016%20Mouser/Gain-Phase-THD-THDN-1v.png)
 
-## All graphs, at 100mV
+# 3. All transformers, compared by voltage
 
-For weaker signals, microphones, etc.
+## 3.1. 100mV
+
+For weaker signals, microphones, etc.  Note how most graphs are flatter, but possibly noisier.
 
 Bourns SM-LP-5001:
 ![Bourns SM-LP-5001](Data/Bourns%20SM-LP-5001/Gain-Phase-THD-THDN-0.1v.png)
@@ -126,7 +141,7 @@ EI-14 eBay:
 EI-14 TL016:
 ![EI-14 TL016](Data/EI-14%20Red%20TL016%20Mouser/Gain-Phase-THD-THDN-0.1v.png)
 
-## All graphs, at 3V
+## 3.2. 3V
 
 For stronger signals, speaker outputs, etc.
 
@@ -145,12 +160,12 @@ EI-14 eBay:
 EI-14 TL016:
 ![EI-14 TL016](Data/EI-14%20Red%20TL016%20Mouser/Gain-Phase-THD-THDN-3v.png)
 
-# 3. Test Board Details
+# 4. Test Board Details
 
 KiCAD files are [here](Transformer-FRA/).  Below are snapshot images taken on 2025-07-02.
 
 ![Schematic](Images/Test%20Board%20Schematic.png)
 
-![Board](Images/Board.png)
+![Board](Images/Test%20Board%20PCB.png)
 
 I hand assembled 0R resistors in series (R2 and R4), and a 1k load resistor on the port connected to the scope input on the AD2 (R3).  The input load resistor (R1) was left unpopulated.  So the transformers were seeing a 1k load, transformed by the transformer.
